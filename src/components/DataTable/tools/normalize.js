@@ -43,7 +43,7 @@ const normalize = (rows, headers, prevState = {}) => {
       // Initialize the cell info and state values, namely for editing
       cellsById[id] = {
         id,
-        value: row[key],
+        value: (key.indexOf('.') > -1 ? eval(`row.${key}`) : row[key]),
         isEditable: false,
         isEditing: false,
         isValid: true,
